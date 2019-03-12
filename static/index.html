@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoList</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td id="task-box">
+                <div id="add-task-wrapper">
+                    <input class="task-input" id="task" type="text">
+                    <button class="add-btn" onclick="addTask()"> Add task</button>
+                </div>
+                <div id="tasks-box">
+                </div>
+            </td>
+            <td id="list-box">
+                <div id="add-list-wrapper">
+                    <input class="list-input" id="list" type="text">
+                    <button class="add-btn" onclick="addList()"> Add list</button>
+                </div>
+                <div id="lists-box">
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="scripts/index.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "lists": [
+    {
+      "id": 0,
+      "name": "InCamp"
+    },
+    {
+      "name": "College",
+      "id": 3
+    }
+  ],
+  "tasks": [
+    {
+      "id": 0,
+      "listId": 0,
+      "name": "Todo list",
+      "isDone": false
+    },
+    {
+      "name": "d",
+      "isDone": false,
+      "id": 2
+    },
+    {
+      "name": "Go to",
+      "isDone": false,
+      "listId": 3,
+      "id": 3
+    }
+  ]
+}
