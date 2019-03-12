@@ -9,25 +9,32 @@
 <body>
     <table>
         <tr>
-            <td id="task-box">
-                <div id="add-task-wrapper">
-                    <input class="task-input" id="task" type="text">
-                    <button class="add-btn" onclick="addTask()"> Add task</button>
-                </div>
-                <div id="tasks-box">
-                </div>
-            </td>
-            <td id="list-box">
+            <td>
                 <div id="add-list-wrapper">
                     <input class="list-input" id="list" type="text">
                     <button class="add-btn" onclick="addList()"> Add list</button>
                 </div>
+            </td>
+            <td>
+                <div id="add-task-wrapper">
+                    <input class="task-input" id="task" type="text">
+                    <button class="add-btn" onclick="addTask()"> Add task</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td id="list-box">
                 <div id="lists-box">
+                </div>
+            </td>
+            <td id="task-box">
+                <div id="tasks-box">
                 </div>
             </td>
         </tr>
     </table>
-
+    <script src="scripts/CrudService.js" type="text/javascript"></script>
+    <script src="scripts/TaskService.js" type="text/javascript"></script>
     <script src="scripts/index.js" type="text/javascript"></script>
 </body>
 </html>

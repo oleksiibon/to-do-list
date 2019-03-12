@@ -5,6 +5,10 @@ body{
 span {
     display: inline-block;
     width: 300px;
+    cursor: default;
+}
+span :hover {
+    border: 1px;
 }
 button {
     color: white;
@@ -34,7 +38,6 @@ button {
 }
 
 #tasks-box{
-    margin-top: 40px;
     display: block;
 }
 
@@ -51,3 +54,5 @@ button {
 #current-list{
     background-color: aqua;
 }
+
+
