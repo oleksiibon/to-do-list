@@ -4,7 +4,7 @@ function renderTasks(listName) {
   }
   localStorage.setItem("currentList", listName);
   document.getElementById("tasks-box").innerHTML = "";
-  fetch(`http://localhost:3000/tasks?listId=${listName}`, {headers: {"Content-Type": "application/json"}})
+  fetch(`http://localhost:3000/tasks?listId=${ listName }`, { headers: { "Content-Type": "application/json" } })
     .then(response => {
       return response.json();
     })
@@ -47,7 +47,7 @@ function renderTasks(listName) {
 function renderLists() {
   localStorage.setItem("currentList", currentList);
   document.getElementById("lists-box").innerHTML = "";
-  fetch(`http://localhost:3000/lists`, {headers: {"Content-Type": "application/json"}})
+  fetch(`http://localhost:3000/lists`, { headers: { "Content-Type": "application/json" } })
     .then(response => {
       return response.json();
     })
@@ -78,9 +78,9 @@ function renderLists() {
 
 function addTask() {
   let task = document.getElementById("task").value;
-  let obj = {name: task, isDone: false, listId: currentList};
+  let obj = { name: task, isDone: false, listId: currentList };
   let body = JSON.stringify(obj);
-  fetch("http://localhost:3000/tasks", {method: "POST", body: body, headers: {"Content-Type": "application/json"}})
+  fetch("http://localhost:3000/tasks", { method: "POST", body: body, headers: { "Content-Type": "application/json" } })
     .then(() => {
       document.getElementById("task").value = "";
       renderTasks(currentList);
@@ -88,35 +88,17 @@ function addTask() {
 
 }
 
-function setTasksInLocaleStorage() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  localStorage.setItem("currentList", currentList);
-
-}
-
-function getTasksFromLocaleStorage() {
-  if (localStorage.getItem("tasks") !== null && localStorage.getItem("tasks").length > 3) {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-    currentList = +localStorage.getItem("currentList");
-  }
-}
-
 function doDone(e) {
   const id = e.target.parentElement.getAttribute('index');
   const isDone = e.target.parentElement.getAttribute('isDone');
-  let done = false
-  if (isDone === "false") {
-    done = true;
-  } else {
-    done = false;
-  }
+  let done = isDone === "false";
   const body = JSON.stringify({
     isDone: done
   });
-  fetch(`http://localhost:3000/tasks/${id}`, {
+  fetch(`http://localhost:3000/tasks/${ id }`, {
     method: "PATCH",
     body: body,
-    headers: {"Content-Type": "application/json"}
+    headers: { "Content-Type": "application/json" }
   })
     .then(() => {
       renderTasks(currentList);
@@ -125,9 +107,9 @@ function doDone(e) {
 
 function deleteTask(e) {
   const id = e.target.parentElement.getAttribute('index');
-  fetch(`http://localhost:3000/tasks/${id}`, {
+  fetch(`http://localhost:3000/tasks/${ id }`, {
     method: "DELETE",
-    headers: {"Content-Type": "application/json"}
+    headers: { "Content-Type": "application/json" }
   })
     .then(() => {
       renderTasks(currentList);
@@ -178,10 +160,10 @@ function approveChange(e) {
   const body = JSON.stringify({
     name: task
   });
-  fetch(`http://localhost:3000/tasks/${id}`, {
+  fetch(`http://localhost:3000/tasks/${ id }`, {
     method: "PATCH",
     body: body,
-    headers: {"Content-Type": "application/json"}
+    headers: { "Content-Type": "application/json" }
   })
     .then(() => {
       renderTasks(currentList);
@@ -194,7 +176,7 @@ function addList() {
     name: name
   };
   let str = JSON.stringify(body);
-  fetch("http://localhost:3000/lists", {method: "POST", body: str, headers: {"Content-Type": "application/json"}})
+  fetch("http://localhost:3000/lists", { method: "POST", body: str, headers: { "Content-Type": "application/json" } })
     .then(data => data.json())
     .then((data) => {
       document.getElementById("list").value = "";
@@ -214,7 +196,7 @@ function changeList(e) {
 
 function deleteList(e) {
   const listId = +e.target.parentElement.getAttribute('listId');
-  fetch(`http://localhost:3000/lists/${listId}`, {method: "DELETE"})
+  fetch(`http://localhost:3000/lists/${ listId }`, { method: "DELETE" })
     .then(() => {
       console.log(currentList, listId);
       if (currentList === listId) {
